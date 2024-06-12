@@ -21,7 +21,7 @@ CREATE TABLE respuesta (
     numPregunta int NOT NULL,
     numRespuesta int NOT NULL,
     respuesta varchar(300) NOT NULL,
-    numRespCorrecta tinyint NOT NULL,
+    respCorrecta tinyint NOT NULL,
     FOREIGN KEY (idExamen, numPregunta) REFERENCES pregunta(idExamen, numPregunta) ON DELETE CASCADE,
     PRIMARY KEY (idExamen, numPregunta, numRespuesta)
 );

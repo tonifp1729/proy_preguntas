@@ -20,6 +20,8 @@
             <button type="button" id="btnAgregar" class="btn">Agregar nueva pregunta</button>
             <button type="submit" class="btn">Guardar</button>
         </form>
+        <br>
+        <a href="index.php?controlador=cpreguntas&action=irindice">Volver al índice</a>
     </div>
     <script src="preguntas.js"></script>
 </body>
