@@ -50,7 +50,7 @@
             } else {
                 $this->irnuevoexamen();
             }
-
+            
             return ['error' => $error];
         }
 
@@ -97,7 +97,50 @@
                 $pdf->Output('D', 'examen.pdf');
                 exit;
             }
+        }
+        //guardararchivador
+        public function guardarArchivos() {
+            $error = null;
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                //Verificamos que el archivo recibido sea PDF
+                if (isset($_FILES['archivoPDF']) && $_FILES['archivoPDF']['error'] === UPLOAD_ERR_OK) {
+                    $tipoArchivo = $_FILES['archivoPDF']['type'];
+                    if ($tipoArchivo === 'application/pdf') {
+                        //Si el archivo es un PDF realizamos los procesos de guardado
+                        $nombreArchivoOriginal = $_FILES['archivoPDF']['name'];
+                        $rutaTemporalArchivo = $_FILES['archivoPDF']['tmp_name'];
+        
+                        //Creamos un nombre único para el archivo
+                        $nombreArchivoUnico = uniqid('pdf_', true) . '.pdf';
+                        $rutaDestino = 'pdfs/' . $nombreArchivoUnico; 
+        
+                        //Movemos el archivo a la ubicación deseada
+                        if (move_uploaded_file($rutaTemporalArchivo, $rutaDestino)) {
+                            //Guardamos la información del archivo en la base de datos
+                            $preguntas = new Preguntas();
+                            $preguntas->guardarArchivador($nombreArchivoOriginal, $nombreArchivoUnico, $rutaDestino);
+                            $this->irexito();
+                        } else {
+                            $error = 'fallo_proceso';
+                            $this->view = 'subfallida';
+                        }
+                    } else {
+                        $error = 'tipo_archivo';
+                        $this->view = 'subfallida';
+                    }
+                } else {
+                    $error = 'no_seleccionado';
+                    $this->view = 'subfallida';
+                }
+            }
+            
+            return ['error' => $error];
         }        
+
+        public function irexito() {
+            $this->view = "subexitosa";
+        }
 
         public function irindice() {
             $this->view = "indice";

@@ -25,3 +25,12 @@ CREATE TABLE respuesta (
     FOREIGN KEY (idExamen, numPregunta) REFERENCES pregunta(idExamen, numPregunta) ON DELETE CASCADE,
     PRIMARY KEY (idExamen, numPregunta, numRespuesta)
 );
+
+-- TABLA ARCHIVADOR
+CREATE TABLE archivador (
+    idArchivo int AUTO_INCREMENT PRIMARY KEY,
+    nombreOriginal varchar(255) NOT NULL,
+    nombreGuardado varchar(255) NOT NULL,
+    rutaArchivo varchar(255) NOT NULL,
+    fechaSubida timestamp DEFAULT CURRENT_TIMESTAMP
+);

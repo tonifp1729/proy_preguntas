@@ -22,6 +22,13 @@
                 <button type="submit"  class="btn">Bajar en PDF</button>
             </form>
             <br>
+            <form method="POST" action="index.php?controlador=cpreguntas&action=guardarArchivos" enctype="multipart/form-data">
+                <label for="archivoPDF">Subir archivos (PDF): </label>
+                <input type="file" id="archivoPDF" name="archivoPDF" accept=".pdf" required>
+                
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+            <br>
             <a href="index.php?controlador=cpreguntas&action=irindice">Volver al índice</a>
         </div>
         <script src="preguntas.js"></script>

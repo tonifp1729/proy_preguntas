@@ -89,6 +89,14 @@
             return $respuestas;
         }
 
+        public function guardarArchivador($nombreOriginal, $nombreGuardado, $rutaArchivo) {
+            $SQL = "INSERT INTO archivador (nombreOriginal, nombreGuardado, rutaArchivo) VALUES (?, ?, ?)";
+            $consulta = $this->conexion->prepare($SQL);
+            $consulta->bind_param("sss", $nombreOriginal, $nombreGuardado, $rutaArchivo);
+            $consulta->execute();
+            $consulta->close();
+        }
+
     }
 
 ?>

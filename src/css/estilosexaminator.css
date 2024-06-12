@@ -15,6 +15,12 @@ h1, h2 {
     margin-top: 0;
 }
 
+.error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
 /* Estilos del formulario de preguntas */
 .grupo-formulario {
     margin-bottom: 20px;
