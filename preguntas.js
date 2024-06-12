@@ -1,38 +1,39 @@
 //ESTE ES EL SCRIPT QUE MANEJA PARTE DEL FORMULARIO
-document.addEventListener('DOMContentLoaded', () => {
-    const btnAgregarPregunta = document.getElementById('btnAgregar');
-    const contenedorPreguntas = document.getElementById('containerPreguntas');
 
-    btnAgregarPregunta.addEventListener('click', () => {
-        const divPregunta = document.createElement('div');
-        divPregunta.classList.add('pregunta');
+document.addEventListener('DOMContentLoaded', () => {
+    const btnAgregar = document.getElementById('btnAgregar');
+    const contenedorPreguntas = document.getElementById('contenedorPreguntas');
+
+    btnAgregar.addEventListener('click', () => {
+        const preguntaDiv = document.createElement('div');
+        preguntaDiv.classList.add('pregunta');
 
         const indicePregunta = contenedorPreguntas.children.length;
 
-        divPregunta.innerHTML = `
+        preguntaDiv.innerHTML = `
             <input type="text" name="preguntas[${indicePregunta}][pregunta]" placeholder="Escribe la pregunta" required>
             <div class="respuestas">
                 <div>
-                    <input type="text" name="preguntas[${indicePregunta}][respuestas][]" placeholder="Respuesta 1" required>
                     <input type="radio" name="preguntas[${indicePregunta}][respuestaCorrecta]" value="0" required>
+                    <input type="text" name="preguntas[${indicePregunta}][respuestas][]" placeholder="Respuesta 1" required>
                 </div>
                 <div>
-                    <input type="text" name="preguntas[${indicePregunta}][respuestas][]" placeholder="Respuesta 2" required>
                     <input type="radio" name="preguntas[${indicePregunta}][respuestaCorrecta]" value="1">
+                    <input type="text" name="preguntas[${indicePregunta}][respuestas][]" placeholder="Respuesta 2" required>
                 </div>
                 <div>
-                    <input type="text" name="preguntas[${indicePregunta}][respuestas][]" placeholder="Respuesta 3" required>
                     <input type="radio" name="preguntas[${indicePregunta}][respuestaCorrecta]" value="2">
+                    <input type="text" name="preguntas[${indicePregunta}][respuestas][]" placeholder="Respuesta 3" required>
                 </div>
             </div>
             <button type="button" class="btnEliminarPregunta">Eliminar Pregunta</button>
         `;
 
-        contenedorPreguntas.appendChild(divPregunta);
+        contenedorPreguntas.appendChild(preguntaDiv);
 
-        const btnEliminarPregunta = divPregunta.querySelector('.btnEliminarPregunta');
+        const btnEliminarPregunta = preguntaDiv.querySelector('.btnEliminarPregunta');
         btnEliminarPregunta.addEventListener('click', () => {
-            contenedorPreguntas.removeChild(divPregunta);
+            contenedorPreguntas.removeChild(preguntaDiv);
         });
     });
 });

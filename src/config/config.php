@@ -7,7 +7,7 @@
     DEFINE('DB_NAME', 'proyectosevg_2daw00_BD1');
 
     /* Default options */
-    define("DEFAULT_CONTROLLER", "");
-    define("DEFAULT_ACTION", "");
+    define("DEFAULT_CONTROLLER", "cpreguntas");
+    define("DEFAULT_ACTION", "irindice");
 
 ?>

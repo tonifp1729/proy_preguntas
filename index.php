@@ -13,9 +13,6 @@
 
     //Cargamos el controlador
     require_once $rutaControlador;
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
     $controladorNombre = 'Controlador'.$_GET["controlador"];
     $controlador = new $controladorNombre();
 

@@ -7,8 +7,8 @@
     </head>
     <body>
         <div class="container">
-            <h1>¡¡Reconocimiento realizado!!</h1>
-            <a href="index.php?controlador=creconocimientos&action=irhacer">Volver</a>
+            <h1>¡¡Subida realizada exitosamente!!</h1>
+            <a href="index.php?controlador=cpreguntas&action=irindice">Volver</a>
         </div>
     </body>
 </html>
